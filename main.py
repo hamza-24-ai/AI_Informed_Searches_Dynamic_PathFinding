@@ -198,3 +198,32 @@ def apply_size(event=None):
         rows, cols = 20, 20
     grid.resize(rows, cols)
     grid.draw()
+
+# ─── Setup & Launch
+
+setup_display(grid)
+
+callbacks = {
+    'run':              run_search,
+    'reset':            reset,
+    'generate':         generate,
+    'toggle_algo':      toggle_algo,
+    'toggle_heuristic': toggle_heuristic,
+    'toggle_dynamic':   toggle_dynamic,
+    'apply_size':       apply_size,
+}
+
+controls = add_controls(grid, callbacks)
+connect_mouse(grid, controls)
+
+# Metrics text box on the side panel
+metrics_text = grid.fig.text(
+    0.77, 0.04,
+    "Nodes Visited : 0\nPath Cost     : 0\nTime (ms)     : 0.0",
+    fontsize=9,
+    verticalalignment='bottom',
+    family='monospace',
+    bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.8)
+)
+
+plt.show()
