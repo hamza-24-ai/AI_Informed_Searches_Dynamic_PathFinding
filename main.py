@@ -142,3 +142,59 @@ def run_search(event=None):
 
     state['running'] = False
 
+# ─── Button Callbacks
+
+def reset(event=None):
+    if state['running']:
+        return
+    grid.reset_search()
+    grid.draw()
+    metrics['nodes'] = metrics['cost'] = metrics['time_ms'] = 0
+    update_metrics_display()
+
+def generate(event=None):
+    if state['running']:
+        return
+    try:
+        density = float(controls['txt_density'].text)
+    except:
+        density = 0.3
+    grid.generate_random_maze(density)
+    grid.draw()
+
+def toggle_algo(event=None):
+    if state['algo'] == 'astar':
+        state['algo'] = 'gbfs'
+        controls['btn_algo'].label.set_text('Algo: GBFS')
+    else:
+        state['algo'] = 'astar'
+        controls['btn_algo'].label.set_text('Algo: A*')
+    grid.fig.canvas.draw_idle()
+
+def toggle_heuristic(event=None):
+    if state['heuristic'] == 'manhattan':
+        state['heuristic'] = 'euclidean'
+        controls['btn_heur'].label.set_text('Heur: Euclidean')
+    else:
+        state['heuristic'] = 'manhattan'
+        controls['btn_heur'].label.set_text('Heur: Manhattan')
+    grid.fig.canvas.draw_idle()
+
+def toggle_dynamic(event=None):
+    state['dynamic'] = not state['dynamic']
+    label = 'Dynamic: ON' if state['dynamic'] else 'Dynamic: OFF'
+    controls['btn_dyn'].label.set_text(label)
+    grid.fig.canvas.draw_idle()
+
+def apply_size(event=None):
+    if state['running']:
+        return
+    try:
+        rows = int(controls['txt_rows'].text)
+        cols = int(controls['txt_cols'].text)
+        rows = max(5, min(rows, 50))
+        cols = max(5, min(cols, 50))
+    except:
+        rows, cols = 20, 20
+    grid.resize(rows, cols)
+    grid.draw()
