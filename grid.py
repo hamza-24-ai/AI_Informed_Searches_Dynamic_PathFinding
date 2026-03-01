@@ -190,3 +190,38 @@ def add_controls(grid, callbacks):
     }
 
     return controls
+
+def connect_mouse(grid, controls_ref):
+    """Handle mouse clicks to add/remove walls, or set start/goal."""
+    pressing = [False]
+
+    def on_press(event):
+        if event.inaxes != grid.ax:
+            return
+        pressing[0] = True
+        handle_click(event)
+
+    def on_release(event):
+        pressing[0] = False
+
+    def on_motion(event):
+        if pressing[0] and event.inaxes == grid.ax:
+            handle_click(event)
+
+    def handle_click(event):
+        c = int(round(event.xdata))
+        r = int(round(event.ydata))
+        if not (0 <= r < grid.rows and 0 <= c < grid.cols):
+            return
+        if (r, c) == grid.start or (r, c) == grid.goal:
+            return
+        # Left click = place wall, right click = remove wall
+        if event.button == 1:
+            grid.set_cell(r, c, WALL)
+        elif event.button == 3:
+            grid.set_cell(r, c, EMPTY)
+        grid.draw()
+
+    grid.fig.canvas.mpl_connect('button_press_event', on_press)
+    grid.fig.canvas.mpl_connect('button_release_event', on_release)
+    grid.fig.canvas.mpl_connect('motion_notify_event', on_motion)
