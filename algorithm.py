@@ -22,3 +22,49 @@ def reconstruct_path(came_from, start, goal):
     path.append(start)
     path.reverse()
     return path
+
+# ─── Greedy Best-First Search
+
+def gbfs(grid, heuristic_fn, draw_callback=None):
+    start = grid.start
+    goal  = grid.goal
+
+    # (heuristic, node)
+    open_list = []
+    heapq.heappush(open_list, (heuristic_fn(start, goal), start))
+
+    came_from = {start: None}
+    visited   = set()
+    visited.add(start)
+
+    nodes_visited = 0
+
+    while open_list:
+        _, current = heapq.heappop(open_list)
+
+        if current == goal:
+            path = reconstruct_path(came_from, start, goal)
+            path_cost = len(path) - 1
+            return path, nodes_visited, path_cost
+
+        nodes_visited += 1
+
+        # Mark as visited
+        if current != start and current != goal:
+            grid.set_cell(current[0], current[1], VISITED)
+
+        for neighbor in grid.get_neighbors(current[0], current[1]):
+            if neighbor not in visited:
+                visited.add(neighbor)
+                came_from[neighbor] = current
+
+                if neighbor != goal:
+                    grid.set_cell(neighbor[0], neighbor[1], FRONTIER)
+
+                heapq.heappush(open_list, (heuristic_fn(neighbor, goal), neighbor))
+
+        if draw_callback:
+            draw_callback()
+
+    return None, nodes_visited, 0  # No path found
+
