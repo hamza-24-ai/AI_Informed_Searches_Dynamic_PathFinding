@@ -106,3 +106,35 @@ class Grid:
     def draw(self):
         self.img.set_data(self.to_color_array())
         self.fig.canvas.draw_idle()
+
+def setup_display(grid):
+    fig, ax = plt.subplots(figsize=(8, 8))
+    plt.subplots_adjust(left=0.05, right=0.75, top=0.95, bottom=0.05)
+
+    grid.fig = fig
+    grid.ax = ax
+
+    color_array = grid.to_color_array()
+    img = ax.imshow(color_array, interpolation='nearest')
+    grid.img = img
+
+    # Draw grid lines
+    ax.set_xticks(np.arange(-0.5, grid.cols, 1), minor=True)
+    ax.set_yticks(np.arange(-0.5, grid.rows, 1), minor=True)
+    ax.grid(which='minor', color='gray', linewidth=0.3)
+    ax.tick_params(which='both', bottom=False, left=False, labelbottom=False, labelleft=False)
+    ax.set_title("Dynamic Pathfinding Agent", fontsize=13)
+
+    # Legend
+    legend_patches = [
+        mpatches.Patch(color=COLORS[START], label='Start'),
+        mpatches.Patch(color=COLORS[GOAL], label='Goal'),
+        mpatches.Patch(color=COLORS[WALL], label='Wall'),
+        mpatches.Patch(color=COLORS[FRONTIER], label='Frontier'),
+        mpatches.Patch(color=COLORS[VISITED], label='Visited'),
+        mpatches.Patch(color=COLORS[PATH], label='Path'),
+    ]
+    ax.legend(handles=legend_patches, loc='upper left',
+              bbox_to_anchor=(1.02, 1), fontsize=9, framealpha=0.9)
+
+    return fig, ax, img
