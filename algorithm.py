@@ -123,5 +123,10 @@ def astar(grid, heuristic_fn, draw_callback=None):
 
     return None, nodes_visited, 0  # No path found
 
+# ─── Mark final path on grid
 
+def mark_path(grid, path):
+    for node in path:
+        if node != grid.start and node != grid.goal:
+            grid.set_cell(node[0], node[1], PATH)
 
