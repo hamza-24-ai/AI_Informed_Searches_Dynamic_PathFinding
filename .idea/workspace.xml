@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a023e13d-cac4-46c6-b48a-9de5872e5b37" name="Changes" comment="set up display implementation">
+    <list default="true" id="a023e13d-cac4-46c6-b48a-9de5872e5b37" name="Changes" comment="After complete testing,Worst and good case OK UI complete work done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithm.py" beforeDir="false" afterPath="$PROJECT_DIR$/algorithm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/grid.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +39,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
@@ -207,7 +205,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772347380326</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="After complete testing,Worst and good case OK UI complete work done">
+      <option name="closed" value="true" />
+      <created>1772362473878</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1772362473878</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -228,6 +234,7 @@
     <MESSAGE value="make dynamically obstacle spawning and again find route calculation dynamically" />
     <MESSAGE value="make button draw and , toggle dynamic and apply size implementation" />
     <MESSAGE value="set up display implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="set up display implementation" />
+    <MESSAGE value="After complete testing,Worst and good case OK UI complete work done" />
+    <option name="LAST_COMMIT_MESSAGE" value="After complete testing,Worst and good case OK UI complete work done" />
   </component>
 </project>
