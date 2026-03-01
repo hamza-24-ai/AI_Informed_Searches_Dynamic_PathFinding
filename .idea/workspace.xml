@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a023e13d-cac4-46c6-b48a-9de5872e5b37" name="Changes" comment="define function of setup_display">
-      <change beforePath="$PROJECT_DIR$/grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/grid.py" afterDir="false" />
+    <list default="true" id="a023e13d-cac4-46c6-b48a-9de5872e5b37" name="Changes" comment="Add/Remove wall define">
+      <change beforePath="$PROJECT_DIR$/algorithm.py" beforeDir="false" afterPath="$PROJECT_DIR$/algorithm.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +100,23 @@
       <option name="project" value="LOCAL" />
       <updated>1772345633155</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="generate button control function">
+      <option name="closed" value="true" />
+      <created>1772345712346</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1772345712346</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add/Remove wall define">
+      <option name="closed" value="true" />
+      <created>1772345774846</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1772345774846</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -108,6 +124,8 @@
     <MESSAGE value="import libraries and color division" />
     <MESSAGE value="make class graph and test it" />
     <MESSAGE value="define function of setup_display" />
-    <option name="LAST_COMMIT_MESSAGE" value="define function of setup_display" />
+    <MESSAGE value="generate button control function" />
+    <MESSAGE value="Add/Remove wall define" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add/Remove wall define" />
   </component>
 </project>
