@@ -138,3 +138,55 @@ def setup_display(grid):
               bbox_to_anchor=(1.02, 1), fontsize=9, framealpha=0.9)
 
     return fig, ax, img
+
+def add_controls(grid, callbacks):
+    """
+    callbacks is a dict with keys:
+    'run', 'reset', 'generate', 'toggle_algo', 'toggle_heuristic', 'toggle_dynamic'
+    """
+    fig = grid.fig
+
+    btn_color = '0.85'
+
+    # Button positions [left, bottom, width, height]
+    ax_run     = fig.add_axes([0.77, 0.82, 0.20, 0.05])
+    ax_reset   = fig.add_axes([0.77, 0.75, 0.20, 0.05])
+    ax_gen     = fig.add_axes([0.77, 0.68, 0.20, 0.05])
+    ax_algo    = fig.add_axes([0.77, 0.58, 0.20, 0.05])
+    ax_heur    = fig.add_axes([0.77, 0.51, 0.20, 0.05])
+    ax_dyn     = fig.add_axes([0.77, 0.44, 0.20, 0.05])
+    ax_rows    = fig.add_axes([0.77, 0.34, 0.20, 0.05])
+    ax_cols    = fig.add_axes([0.77, 0.27, 0.20, 0.05])
+    ax_density = fig.add_axes([0.77, 0.20, 0.20, 0.05])
+    ax_apply   = fig.add_axes([0.77, 0.13, 0.20, 0.05])
+
+    btn_run     = Button(ax_run,     'Run',          color=btn_color)
+    btn_reset   = Button(ax_reset,   'Reset',        color=btn_color)
+    btn_gen     = Button(ax_gen,     'Generate Maze',color=btn_color)
+    btn_algo    = Button(ax_algo,    'Algo: A*',     color=btn_color)
+    btn_heur    = Button(ax_heur,    'Heur: Manhattan', color=btn_color)
+    btn_dyn     = Button(ax_dyn,     'Dynamic: OFF', color=btn_color)
+
+    txt_rows    = TextBox(ax_rows,    'Rows: ',    initial=str(grid.rows))
+    txt_cols    = TextBox(ax_cols,    'Cols: ',    initial=str(grid.cols))
+    txt_density = TextBox(ax_density, 'Density: ', initial='0.3')
+    btn_apply   = Button(ax_apply,   'Apply Size', color=btn_color)
+
+    btn_run.on_clicked(callbacks['run'])
+    btn_reset.on_clicked(callbacks['reset'])
+    btn_gen.on_clicked(callbacks['generate'])
+    btn_algo.on_clicked(callbacks['toggle_algo'])
+    btn_heur.on_clicked(callbacks['toggle_heuristic'])
+    btn_dyn.on_clicked(callbacks['toggle_dynamic'])
+    btn_apply.on_clicked(callbacks['apply_size'])
+
+    controls = {
+        'btn_algo': btn_algo,
+        'btn_heur': btn_heur,
+        'btn_dyn':  btn_dyn,
+        'txt_rows': txt_rows,
+        'txt_cols': txt_cols,
+        'txt_density': txt_density,
+    }
+
+    return controls

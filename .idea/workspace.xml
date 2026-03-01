@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a023e13d-cac4-46c6-b48a-9de5872e5b37" name="Changes" comment="make 3 python files for this GUI Informed Searches Algorithm">
-      <change beforePath="$PROJECT_DIR$/.idea/AI_A2_24F-6038.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AI_A2_24F-6038.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="a023e13d-cac4-46c6-b48a-9de5872e5b37" name="Changes" comment="define function of setup_display">
       <change beforePath="$PROJECT_DIR$/grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/grid.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,11 +76,38 @@
       <option name="project" value="LOCAL" />
       <updated>1772338203850</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="import libraries and color division">
+      <option name="closed" value="true" />
+      <created>1772345398048</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1772345398048</updated>
+    </task>
+    <task id="LOCAL-00004" summary="make class graph and test it">
+      <option name="closed" value="true" />
+      <created>1772345553993</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1772345553993</updated>
+    </task>
+    <task id="LOCAL-00005" summary="define function of setup_display">
+      <option name="closed" value="true" />
+      <created>1772345633155</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1772345633155</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="make 3 python files for this GUI Informed Searches Algorithm" />
-    <option name="LAST_COMMIT_MESSAGE" value="make 3 python files for this GUI Informed Searches Algorithm" />
+    <MESSAGE value="import libraries and color division" />
+    <MESSAGE value="make class graph and test it" />
+    <MESSAGE value="define function of setup_display" />
+    <option name="LAST_COMMIT_MESSAGE" value="define function of setup_display" />
   </component>
 </project>
