@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a023e13d-cac4-46c6-b48a-9de5872e5b37" name="Changes" comment="making helper functions">
+    <list default="true" id="a023e13d-cac4-46c6-b48a-9de5872e5b37" name="Changes" comment="set up display implementation">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algorithm.py" beforeDir="false" afterPath="$PROJECT_DIR$/algorithm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/grid.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -172,7 +175,39 @@
       <option name="project" value="LOCAL" />
       <updated>1772346963558</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="making animation trigger, obstacle spawning and run logic">
+      <option name="closed" value="true" />
+      <created>1772347133736</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1772347133736</updated>
+    </task>
+    <task id="LOCAL-00016" summary="make dynamically obstacle spawning and again find route calculation dynamically">
+      <option name="closed" value="true" />
+      <created>1772347224912</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1772347224912</updated>
+    </task>
+    <task id="LOCAL-00017" summary="make button draw and , toggle dynamic and apply size implementation">
+      <option name="closed" value="true" />
+      <created>1772347327519</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1772347327519</updated>
+    </task>
+    <task id="LOCAL-00018" summary="set up display implementation">
+      <option name="closed" value="true" />
+      <created>1772347380326</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1772347380326</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -189,6 +224,10 @@
     <MESSAGE value="make mark path function which shows final path" />
     <MESSAGE value="import libraries and essential components from the making two module mean grid and algorithm" />
     <MESSAGE value="making helper functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="making helper functions" />
+    <MESSAGE value="making animation trigger, obstacle spawning and run logic" />
+    <MESSAGE value="make dynamically obstacle spawning and again find route calculation dynamically" />
+    <MESSAGE value="make button draw and , toggle dynamic and apply size implementation" />
+    <MESSAGE value="set up display implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="set up display implementation" />
   </component>
 </project>

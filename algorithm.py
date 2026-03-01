@@ -1,9 +1,7 @@
 import heapq
 import math
-from grid import EMPTY, WALL, START, GOAL, VISITED, FRONTIER, PATH
+from grid import START, GOAL, VISITED, FRONTIER, PATH
 
-
-# ─── Heuristics
 
 def manhattan(a, b):
     return abs(a[0] - b[0]) + abs(a[1] - b[1])
@@ -11,11 +9,9 @@ def manhattan(a, b):
 def euclidean(a, b):
     return math.sqrt((a[0] - b[0])**2 + (a[1] - b[1])**2)
 
-# ─── Reconstruct path from came_from dict
 
 def reconstruct_path(came_from, start, goal):
-    path = []
-    node = goal
+    path, node = [], goal
     while node != start:
         path.append(node)
         node = came_from[node]
@@ -23,20 +19,12 @@ def reconstruct_path(came_from, start, goal):
     path.reverse()
     return path
 
-# ─── Greedy Best-First Search
 
 def gbfs(grid, heuristic_fn, draw_callback=None):
-    start = grid.start
-    goal  = grid.goal
-
-    # (heuristic, node)
-    open_list = []
-    heapq.heappush(open_list, (heuristic_fn(start, goal), start))
-
-    came_from = {start: None}
-    visited   = set()
-    visited.add(start)
-
+    start, goal   = grid.start, grid.goal
+    open_list     = [(heuristic_fn(start, goal), start)]
+    came_from     = {start: None}
+    visited       = {start}
     nodes_visited = 0
 
     while open_list:
@@ -44,44 +32,32 @@ def gbfs(grid, heuristic_fn, draw_callback=None):
 
         if current == goal:
             path = reconstruct_path(came_from, start, goal)
-            path_cost = len(path) - 1
-            return path, nodes_visited, path_cost
+            return path, nodes_visited, len(path) - 1
 
         nodes_visited += 1
-
-        # Mark as visited
         if current != start and current != goal:
             grid.set_cell(current[0], current[1], VISITED)
 
-        for neighbor in grid.get_neighbors(current[0], current[1]):
-            if neighbor not in visited:
-                visited.add(neighbor)
-                came_from[neighbor] = current
-
-                if neighbor != goal:
-                    grid.set_cell(neighbor[0], neighbor[1], FRONTIER)
-
-                heapq.heappush(open_list, (heuristic_fn(neighbor, goal), neighbor))
+        for nb in grid.get_neighbors(current[0], current[1]):
+            if nb not in visited:
+                visited.add(nb)
+                came_from[nb] = current
+                if nb != goal:
+                    grid.set_cell(nb[0], nb[1], FRONTIER)
+                heapq.heappush(open_list, (heuristic_fn(nb, goal), nb))
 
         if draw_callback:
             draw_callback()
 
-    return None, nodes_visited, 0  # No path found
+    return None, nodes_visited, 0
 
-# ─── A* Search
 
 def astar(grid, heuristic_fn, draw_callback=None):
-    start = grid.start
-    goal  = grid.goal
-
-    # (f, g, node)
-    open_list = []
-    heapq.heappush(open_list, (heuristic_fn(start, goal), 0, start))
-
-    came_from = {start: None}
-    g_cost    = {start: 0}
-    expanded  = set()
-
+    start, goal   = grid.start, grid.goal
+    open_list     = [(heuristic_fn(start, goal), 0, start)]
+    came_from     = {start: None}
+    g_cost        = {start: 0}
+    expanded      = set()
     nodes_visited = 0
 
     while open_list:
@@ -89,44 +65,34 @@ def astar(grid, heuristic_fn, draw_callback=None):
 
         if current in expanded:
             continue
-
         expanded.add(current)
 
         if current == goal:
             path = reconstruct_path(came_from, start, goal)
-            path_cost = g_cost[goal]
-            return path, nodes_visited, path_cost
+            return path, nodes_visited, g_cost[goal]
 
         nodes_visited += 1
-
         if current != start and current != goal:
             grid.set_cell(current[0], current[1], VISITED)
 
-        for neighbor in grid.get_neighbors(current[0], current[1]):
-            if neighbor in expanded:
+        for nb in grid.get_neighbors(current[0], current[1]):
+            if nb in expanded:
                 continue
-
-            new_g = g_cost[current] + 1  # each step costs 1
-
-            if neighbor not in g_cost or new_g < g_cost[neighbor]:
-                g_cost[neighbor]    = new_g
-                came_from[neighbor] = current
-                f_val = new_g + heuristic_fn(neighbor, goal)
-
-                if neighbor != goal:
-                    grid.set_cell(neighbor[0], neighbor[1], FRONTIER)
-
-                heapq.heappush(open_list, (f_val, new_g, neighbor))
+            new_g = g_cost[current] + 1
+            if nb not in g_cost or new_g < g_cost[nb]:
+                g_cost[nb]    = new_g
+                came_from[nb] = current
+                if nb != goal:
+                    grid.set_cell(nb[0], nb[1], FRONTIER)
+                heapq.heappush(open_list, (new_g + heuristic_fn(nb, goal), new_g, nb))
 
         if draw_callback:
             draw_callback()
 
-    return None, nodes_visited, 0  # No path found
+    return None, nodes_visited, 0
 
-# ─── Mark final path on grid
 
 def mark_path(grid, path):
     for node in path:
         if node != grid.start and node != grid.goal:
             grid.set_cell(node[0], node[1], PATH)
-
