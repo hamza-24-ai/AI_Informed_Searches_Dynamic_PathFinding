@@ -89,3 +89,56 @@ def run_search(event=None):
         state['running'] = False
         return
 
+# ── Dynamic mode: simulate agent walking and spawning obstacles ──
+    if state['dynamic']:
+        i = 0
+        while i < len(path) - 1:
+            cur = path[i]
+
+            # Spawn obstacle
+            blocked = spawn_obstacle_on_path(path, i)
+
+            if blocked:
+                print(f"Obstacle spawned at {blocked}, re-planning...")
+                grid.reset_search()
+
+                # Re-plan from current position
+                grid.start = cur
+                grid.set_cell(cur[0], cur[1], 2)  # mark as start
+
+                re_start = time.time()
+                if state['algo'] == 'astar':
+                    path, nodes, cost = astar(grid, heuristic_fn, draw_callback=animated_draw)
+                else:
+                    path, nodes, cost = gbfs(grid, heuristic_fn, draw_callback=animated_draw)
+                elapsed += (time.time() - re_start) * 1000
+
+                if path is None:
+                    print("No path after re-planning!")
+                    break
+                i = 0  # restart walking new path
+                continue
+
+            # Move agent: mark cell as path
+            if cur != grid.start and cur != grid.goal:
+                grid.set_cell(cur[0], cur[1], PATH)
+            grid.draw()
+            plt.pause(0.08)
+            i += 1
+
+        # Restore original start
+        grid.start = (0, 0)
+        grid.set_cell(0, 0, 2)
+
+    else:
+        # Just mark final path
+        mark_path(grid, path)
+        grid.draw()
+
+    metrics['nodes']   = nodes
+    metrics['cost']    = cost
+    metrics['time_ms'] = elapsed
+    update_metrics_display()
+
+    state['running'] = False
+
