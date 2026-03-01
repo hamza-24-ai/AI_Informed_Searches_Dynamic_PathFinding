@@ -38,7 +38,7 @@ Installation & Execution
 Clone the repository:
 
 ## Bash
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/hamza-24-ai/AI_Informed_Searches_Dynamic_PathFinding/tree/main
 Navigate to the directory:
 
 ## Bash
