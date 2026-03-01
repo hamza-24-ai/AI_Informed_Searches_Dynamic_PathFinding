@@ -39,3 +39,53 @@ def update_metrics_display():
             f"Time (ms)     : {metrics['time_ms']:.1f}"
         )
         grid.fig.canvas.draw_idle()
+
+# ─── Animation draw callback ──────────────────────────────────────────────────
+
+def animated_draw():
+    grid.draw()
+    plt.pause(0.03)
+
+# ─── Dynamic obstacle spawning ────────────────────────────────────────────────
+
+def spawn_obstacle_on_path(current_path, current_pos_idx):
+    """Randomly spawn a wall on the remaining path (ahead of agent)."""
+    ahead = current_path[current_pos_idx + 1:]  # don't block already-visited
+    candidates = [n for n in ahead if n != grid.goal]
+    if candidates and random.random() < 0.25:   # 25% chance each step
+        chosen = random.choice(candidates)
+        grid.set_cell(chosen[0], chosen[1], WALL)
+        return chosen
+    return None
+
+# ─── Main Run Logic ───────────────────────────────────────────────────────────
+
+def run_search(event=None):
+    if state['running']:
+        return
+    state['running'] = True
+
+    grid.reset_search()
+    grid.draw()
+    plt.pause(0.05)
+
+    heuristic_fn = get_heuristic()
+    start_time   = time.time()
+
+    # Run chosen algorithm
+    if state['algo'] == 'astar':
+        path, nodes, cost = astar(grid, heuristic_fn, draw_callback=animated_draw)
+    else:
+        path, nodes, cost = gbfs(grid, heuristic_fn, draw_callback=animated_draw)
+
+    elapsed = (time.time() - start_time) * 1000
+
+    if path is None:
+        print("No path found!")
+        metrics['nodes']   = nodes
+        metrics['cost']    = 0
+        metrics['time_ms'] = elapsed
+        update_metrics_display()
+        state['running'] = False
+        return
+
