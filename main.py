@@ -23,3 +23,19 @@ metrics = {
 }
 
 metrics_text = None  # will hold the matplotlib text object
+
+# ─── Helpers
+
+def get_heuristic():
+    if state['heuristic'] == 'manhattan':
+        return manhattan
+    return euclidean
+
+def update_metrics_display():
+    if metrics_text:
+        metrics_text.set_text(
+            f"Nodes Visited : {metrics['nodes']}\n"
+            f"Path Cost     : {metrics['cost']}\n"
+            f"Time (ms)     : {metrics['time_ms']:.1f}"
+        )
+        grid.fig.canvas.draw_idle()

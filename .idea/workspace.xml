@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a023e13d-cac4-46c6-b48a-9de5872e5b37" name="Changes" comment="Write A star Algorithm" />
+    <list default="true" id="a023e13d-cac4-46c6-b48a-9de5872e5b37" name="Changes" comment="make mark path function which shows final path">
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -146,7 +148,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772346358000</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="make mark path function which shows final path">
+      <option name="closed" value="true" />
+      <created>1772346423927</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1772346423927</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -160,6 +170,7 @@
     <MESSAGE value="define reconstruction path function" />
     <MESSAGE value="write Best first Search algorithm" />
     <MESSAGE value="Write A star Algorithm" />
-    <option name="LAST_COMMIT_MESSAGE" value="Write A star Algorithm" />
+    <MESSAGE value="make mark path function which shows final path" />
+    <option name="LAST_COMMIT_MESSAGE" value="make mark path function which shows final path" />
   </component>
 </project>
